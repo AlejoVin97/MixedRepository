@@ -5,18 +5,10 @@ public class Jugador : MonoBehaviour
 {
     [SerializeField] private int vidaMaxima = 100;
     private int vida;
-    public int Vida { get { return vida; } }
-    private Vector2 lookKiller;
-    [SerializeField] private GameObject Enemy;
+    public int m_Vida { get { return vida; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() { vida = vidaMaxima; }
-
-    void Update()
-    {
-        lookKiller = (Enemy.transform.position - transform.position).normalized;
-        transform.up = lookKiller.normalized;
-    }
 
     public void RecibirDanio(int cantidad)
     {
@@ -30,7 +22,7 @@ public class Jugador : MonoBehaviour
     public void Curar(int cantidad)
     {
         if (cantidad <= 0) return;
-        vida = Mathf.Min(vida + cantidad, Vida);
+        vida = Mathf.Min(vida + cantidad, vidaMaxima);
         Debug.Log("Jugador: vida " + vida);
 
     }

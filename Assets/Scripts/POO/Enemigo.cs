@@ -6,13 +6,8 @@ public abstract class Enemigo : MonoBehaviour
     [SerializeField] protected int danio = 10;
 
 
-    public virtual void Atacar(Jugador objetivo)
-    {
-        Avanzar(objetivo, 0.5f);
-        Debug.Log(nombre + " ataca: " +  danio);
-        objetivo.RecibirDanio(danio);
-
-    }
+    public abstract void Atacar(Jugador objetivo);
+    
     protected void Avanzar(Jugador objetivo, float paso )
     {
         Vector3 destino = objetivo.transform.position;
